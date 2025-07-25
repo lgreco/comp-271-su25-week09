@@ -21,7 +21,7 @@ There is no final exam for the course. There will be a final assignemnt that wil
 
 This assignment is meant to reinforce your understanding of recursion in Java by designing and implementing recursive solutions to classic problems. First please review and understand the [implementation of **MergeSort** using recursion](./Merge.java).
 
-In addition to the standing coding requirements above, your code for this assignment should be implemented using recursion **only**. Do **not** use loops (`for`, `while`, etc.), helper libraries that use iteration, or mutable static/global variables.
+In addition to the standing coding requirements above, your code for this assignment should be implemented using recursion **only**. Do **not** use loops (`for`, `while`, etc.) in the core logic, helper libraries that use iteration, or mutable static/global variables.
 
 ### Part 1: Recursive Maximum Finder
 
