@@ -83,7 +83,7 @@ From the BJP textbook Chapter 12; or [Ch. 5 from Collins’ book](https://learni
 
 ## Reflect
 
-Compare your code from the previous assignment with [Leo's posted solutions](./DynamicArray.java).
+Compare your code from the previous assignment with [Leo's posted solutions](./solutionsWeek08/HashTable.java).
 
 Then write a brief reflection (100-300 words) discussing what you got right, what you got close but not quite, and where you may have missed the mark. Also discuss what you learned by comparing your code to the posted solutions. The reflection must be substantive. For example, you may find that you missed something in the assignment because you did not put enough time in it or because you did not start work early. It's fine to acknowledge these issues. It is also important to propose a plan to avoid them in the future. And, in later reflections, evaluate how that plan worked.
 
@@ -91,26 +91,22 @@ Then write a brief reflection (100-300 words) discussing what you got right, wha
 ### TECHNICAL NOTES FOR UNGRADING
 
 
-#### `void add(String)`
-The method must first check if there is room for one more element in the object. If not, the underlying array must be resized with `private resize()` first. Don't forget to increment the `occupancy` after the addition of the new element.
+#### `boolean contains(E target)`
 
-#### `int indexOf(String)`
-Check for violations of the Pact, and specifically: multiple `return` statements (even two is one too many), or a `break` statement in a loop. Also it's important to check the elements up to and not including `this.occupancy`. Anything past this position should be `null`.
+This is a variation of a classic traversal in search of a target value. There are several linkelists in the hashtable. We traverse the one where we expect the target value to be (if it is present in the object). The method has two importnat details.
 
-#### `boolean contains(String)`
-This is practically a wrapper for `indexOf`. If the string is present of the array, its `indexOf` will be > -1. There should be no additional code here, other than a call to `indexOf`.
+* The location of the linked list to traverse is given by the function `hashPosition`. This is essentially the hash function we've been using for this object. It was moved to its own method to reduce code redundancy and provide an one-stop shop for maintenance and changes.
 
-#### `int countOf(String)`
-This requires a `for`-loop to check every used position in the underlying array. The loop should run up to (but not including) `this.occupancy`.
+* Method `contains` protects against `null` values. This is important because, when we compare targe and node contents we cannot call `.equals` from a null object.
 
-#### `String remove(int)`
-The method should make sure that the provided index value is legitimate. The method should also shift the elements to the right of the removed element, one position to the right.
 
-#### `String remove(String)`
-This should be a wrapper to `remove(int)`, with no other code in it.
+#### Modifying the object to rehash itself
 
-#### `String toString()`
-It's ok if you didn't use `StringBuilder`. But is your output neat looking?
+* Method `add` now checks if the object's load factor exceeds a specific threshold. When that happens, the object is *rehashed.* 
+
+* Rehashing requires a hash table with a larger underlying array. For that, we introduce a `RESIZE_FACTOR` constant in the object. This allows us to create a temporary hashtable with a larger underlying array than the current object. To manage the rehashing process, we create a dedicated method called `rehash`.
+
+* Method `rehash` creates a larger hashtable object, adds the contents of the present hash table to the temporary hash table, and finally copies the fields of the temporary hash table to the fields of the present hash table. The last step, overwrites the present object with the temporary object. This effectively replaces the present object's underlying array with a larger one whose load factor is below the `LOAD_FACTOR_THRESHOLD`.
 
 
 #### Does your code compile? 
