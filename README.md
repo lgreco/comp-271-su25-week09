@@ -1,4 +1,4 @@
-# COMP 271 SU25 WEEK 06
+# COMP 271 SU25 WEEK 09
 
 This assignment has two parts: a coding part based on current material we discuss in class and a reflection part to evaluate work you have already submitted.
 
@@ -19,32 +19,65 @@ There is no final exam for the course. There will be a final assignemnt that wil
 
 ## Code
 
-You'll work with classes `DynamicArray.java` and interfaces `Xifo.java`, `Fifo.java`, and `Lifo.java`.
+This assignment is meant to reinforce your understanding of recursion in Java by designing and implementing recursive solutions to classic problems. First please review and understand the [implementation of **MergeSort** using recursion](./Merge.java).
+
+In addition to the standing coding requirements above, your code for this assignment should be implemented using recursion **only**. Do **not** use loops (`for`, `while`, etc.), helper libraries that use iteration, or mutable static/global variables.
+
+### Part 1: Recursive Maximum Finder
+
+```java
+public static int findMax(int[] arr, int left, int right)
+```
+
+**Description:**  
+Given an integer array and two indices (`left` and `right`), recursively find and return the **maximum element** in the subarray from `arr[left]` to `arr[right]` inclusive.
+
+**Hint:** This is conceptually similar to how MergeSort divides arrays.
 
 
-### Complete class `Stack.java`. 
-The class implements three interfaces. The standard Java Comparable interface, and two interfaces of our own design: `Xifo` and `Lifo`.
+---
 
-*Hint:* you may want to modify `DynamicArray` with an overloaded method for `add`.
+### Part 2: Recursive Array Reversal
 
+```java
+public static void reverseArray(int[] arr, int left, int right)
+```
 
-### Complete class `Queue.java`. 
-The class implements three interfaces. The standard Java Comparable interface, and two interfaces of our own design: `Xifo` and `Fifo`.
+**Description:** Recursively reverse the elements of the array **in-place**, swapping elements between `left` and `right`.
 
-### Testing your code
-When you are ready to test your code, please send an email to Leo, requesting the test class. Assignments that have not been tested with the test class will be considered incomplete. Allow up to 12 hours for your email to be processed.
+---
+
+### Part 3: Count Occurrences of a Value
+
+```java
+public static int countOccurrences(int[] arr, int target, int index)
+```
+
+**Description:** Recursively count how many times `target` appears in `arr[index]` to the end of the array.
+
+---
+
+### Part 4: Recursive Binary Search
+
+```java
+public static int binarySearch(int[] arr, int target, int left, int right)
+```
+
+**Description:** Use the recursive binary search approach to find the index of `target` in a **sorted** array. Return `-1` if the element is not found.
+
+---
+
+## Submission Guidelines:
+
+- Submit a single Java file named `RecursiveExercises.java`.
+- Each method should be **self-contained**, **recursive**, and **well-documented**.
+- Include a `main()` method to demonstrate test cases that **you write** for each task.
 
 ---
 
 ## Study
 
-From the BJP textbook Chapter 14; or [Ch. 8 from Collins’ book](https://learning.oreilly.com/library/view/data-structures-and/9780470482674/15-chapter08.html). In addition, you should be up to speed with the following.
-
-* Java's [Comparable interface](https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html)
-* Chapter 3.1 (about method overloading) (alternatively Java's [tutorial on methods](https://docs.oracle.com/javase/tutorial/java/javaOO/methods.html))
-* Chapter 18.2 from the BJP textbook (or at the very least Leo’s notes titled “What’s Realistic”)
-* Chapter 8 from the BJP textbook (or at the very least Java’s tutorial on Classes and Objects)
-* Chapter 9 from the BJP textbook (or at the very least Java's tutorial on interfaces and inheritance)
+From the BJP textbook Chapter 12; or [Ch. 5 from Collins’ book](https://learning.oreilly.com/library/view/data-structures-and/9780470482674/12-chapter05.html).
 
 ---
 
